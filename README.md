@@ -51,7 +51,7 @@ There are validation on all `POST` routes.
 
 There are next endpoints exposed:
 
--`GET /api/phones` - to obtain list of phones.
+#### `GET /api/phones` - to obtain list of phones.
 
 Documentation about query params for pagination is [here](https://github.com/moleculerjs/moleculer-db/tree/master/packages/moleculer-db#parameters);
 
@@ -75,7 +75,7 @@ Response example:
 }
 ```
 
-- `POST /api/orders` - to create an order
+#### `POST /api/orders` - to create an order
 
 Request example:
 
@@ -125,7 +125,7 @@ Response example (success):
 }
 ```
 
-- `POST /api/phones` - to create a phone record
+#### `POST /api/phones` - to create a phone record
 
 Request example: 
  ```json
