@@ -1,0 +1,8 @@
+node_modules
+dist
+coverage
+src/**/*.js
+config/local*
+config/production**
+.DS_store
+moleculer.config.dev.json

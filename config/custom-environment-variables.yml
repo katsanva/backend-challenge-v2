@@ -1,0 +1,6 @@
+mongodb:
+    url: MONGODB_CLIENT_URL
+app:
+  server:
+    port: PORT
+    address: ADDRESS

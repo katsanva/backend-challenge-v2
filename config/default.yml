@@ -1,0 +1,20 @@
+mongodb: 
+  url: 'mongodb://localhost:27017/backend-challenge-v2'
+  options: 
+    useNewUrlParser: true
+    autoReconnect: true
+    poolSize: 20
+    socketTimeoutMS: 480000
+    keepAlive: 300000
+    keepAliveInitialDelay: 300000
+    connectTimeoutMS: 30000
+    reconnectTries: 300000
+    reconnectInterval: 1000
+app:
+  broker:
+    cacher:
+      type: 'Memory'
+      ttl: 3600
+  server: 
+    port: 3000
+    address: '0.0.0.0'

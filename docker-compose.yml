@@ -1,0 +1,34 @@
+version: '3'
+services:
+  # gateway:
+  #   build: ./
+  #   links:
+  #     - rabbitmq
+  #   env:
+  #     SERVICES: Gateway
+  #     TRANSPORTER: amqp://rabbitmq:5672
+  #   ports:
+  #     - 127.0.0.1:3000:3000
+  # phones:
+  #   build: ./
+  #   links:
+  #     - rabbitmq
+  #   env:
+  #     SERVICES: Phones
+  #     TRANSPORTER: amqp://rabbitmq:5672
+  # orders:
+  #   build: ./
+  #   links:
+  #     - rabbitmq
+  #   env:
+  #     SERVICES: Orders
+  #     TRANSPORTER: amqp://rabbitmq:5672
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    ports:
+      - 127.0.0.1:5672:5672
+      - 127.0.0.1:15672:15672
+  mongo:
+    image: mongo
+    ports:
+      - 127.0.01:27017:27017
