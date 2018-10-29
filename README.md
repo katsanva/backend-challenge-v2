@@ -145,3 +145,20 @@ Response example:
     "price": "42.00"
 }
 ```
+
+## Q&A
+
+### How would you avoid your order api to be overflow?
+
+- add caching on application level
+- add some load balancing
+- scale application
+- implement some request limits
+
+### How would you improve the system?
+
+- implement all from the above
+- add some user management
+- add more tests to cover some edge-cases
+- describe types more precisely
+- run gateway as https
