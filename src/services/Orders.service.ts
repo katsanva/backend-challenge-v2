@@ -55,28 +55,10 @@ export = {
 
         // assume that there is no duplicates in input
         if (phones.length !== input.length) {
-          throw new Moleculer.Errors.ValidationError(
-            'Some of phones are incorrect',
-            'field',
-            [
-              {
-                type: 'not_exist',
-                message: 'Provided phones do not exist',
-                values: difference(
-                  input,
-                  reduce((acc: string[], { _id }) => [...acc, _id], [], phones),
-                ),
-              },
-            ],
-          );
+          return this.invalidPhonesPassed(input, phones);
         }
 
-        const total = reduce(
-          (acc: BigNumber, { price }: IPhoneDTO) =>
-            acc.plus(new BigNumber(price)),
-          new BigNumber(0),
-          phones,
-        ).toFixed(2);
+        const total = this.sumPrices(phones);
 
         const dataToInsert: IOrderDTO = {
           ...pick(['customer', 'phones'], ctx.params),
@@ -91,5 +73,31 @@ export = {
   },
   afterConnected() {
     this.logger.info('Connected successfully');
+  },
+  methods: {
+    sumPrices(phones: IPhoneDTO[]) {
+      return reduce(
+        (acc: BigNumber, { price }: IPhoneDTO) =>
+          acc.plus(new BigNumber(price)),
+        new BigNumber(0),
+        phones,
+      ).toFixed(2);
+    },
+    invalidPhonesPassed(input: string[], phones: IPhoneDTO[]) {
+      throw new Moleculer.Errors.ValidationError(
+        'Some of phones are incorrect',
+        'field',
+        [
+          {
+            type: 'not_exist',
+            message: 'Provided phones do not exist',
+            values: difference(
+              input,
+              reduce((acc: string[], { _id }) => [...acc, _id], [], phones),
+            ),
+          },
+        ],
+      );
+    },
   },
 } as Moleculer.ServiceSchema;

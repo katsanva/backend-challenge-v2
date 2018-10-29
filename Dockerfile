@@ -2,17 +2,15 @@ FROM node:alpine
 
 WORKDIR /build
 
-COPY package.json package-lock.json /build/
+COPY package.json package-lock.json tsconfig.json /build/
 
 COPY src/ /build/src/
 
-COPY public/ /build/
-
-RUN npm ci
+RUN npm ci && npm run build
 
 FROM node:alpine
 
-EXPOSE 3000
+WORKDIR /app
 
 ENV NODE_ENV=production
 
@@ -22,4 +20,8 @@ COPY --from=0 /build/dist /app/dist/
 
 COPY config /app/config/
 
-ENTRYPOINT [ "moleculer-runner", "dist/services" ]
+COPY package.json package-lock.json /app/
+
+RUN npm i --production
+
+ENTRYPOINT [ "/app/node_modules/.bin/moleculer-runner", "dist/services" ]

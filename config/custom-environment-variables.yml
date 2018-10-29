@@ -1,5 +1,5 @@
 mongodb:
-    url: MONGODB_CLIENT_URL
+    url: MONGODB_URL
 app:
   server:
     port: PORT

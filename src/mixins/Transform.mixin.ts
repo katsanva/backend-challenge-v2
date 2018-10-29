@@ -1,17 +1,19 @@
 import { Context } from 'moleculer';
 import { omit, map } from 'ramda';
 
+const simpleOmit = omit(['createdAt', 'updatedAt', '__v']);
+
 export const onlyData = (ctx: Context, res: any) =>
-  ctx.params.full ? res : omit(['createdAt', 'updatedAt', '__v'], res);
+  ctx.params.full ? res : simpleOmit(res);
 
 export const onlyDataCollection = (ctx: Context, res: any) => {
-  if (!res || !res.rows || !res.rows.length) {
+  if (ctx.params.full || !res || !res.rows || !res.rows.length) {
     return res;
   }
 
   return {
     ...res,
-    rows: map((row: any) => onlyData(ctx, row), res.rows),
+    rows: map(simpleOmit, res.rows),
   };
 };
 

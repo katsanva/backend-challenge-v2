@@ -16,13 +16,13 @@ const OrderSchema = new mongoose.Schema(
 );
 
 export interface IOrderDTO {
-  _id: string;
-  customer: {
-    name: string;
-    surname: string;
-    email: string;
+  _id?: string;
+  customer?: {
+    name?: string;
+    surname?: string;
+    email?: string;
   };
-  phones: string[];
+  phones?: string[];
   total?: string;
   __v?: string;
   createdAt?: string;

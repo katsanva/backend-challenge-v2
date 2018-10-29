@@ -13,11 +13,11 @@ const PhoneSchema = new mongoose.Schema(
 );
 
 export interface IPhoneDTO {
-  _id: string;
-  image: string;
-  name: string;
-  description: string;
-  price: string;
+  _id?: string;
+  image?: string;
+  name?: string;
+  description?: string;
+  price?: string;
   __v?: string;
   createdAt?: string;
   updatedAt?: string;
