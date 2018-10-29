@@ -10,9 +10,7 @@ curl -X GET \
   -H 'content-type: application/json'
 ```
 
-## Application
-
-### General notes
+## General notes
 
 The task was not really clear, so the next assumptions were made:
 
@@ -31,7 +29,7 @@ The app is based on microservice approach and follows next patterns:
 - [Messaging](https://microservices.io/patterns/communication-style/messaging.html)
 - [12 factor apps](https://12factor.net)(or at least tries to follow that)
 
-### Stack
+## Stack
 
 - [Node.js](https://nodejs.org/en/) - a javascript runtime (v10.12)
 - [TypeScript](https://www.typescriptlang.org) - add some types to plain javascript (v3.1)
@@ -41,15 +39,15 @@ The app is based on microservice approach and follows next patterns:
 - [RabbitMQ](https://www.rabbitmq.com) - messaging, that just works (v3.7)
 
 
-### API
+## API
 
-The application will listen on port 3000 by default.
+### Notes
 
-All endpoints will return (and accept, if possible) `application/json`.
+- The application will listen on port 3000 by default.
+- All endpoints will return (and accept, if possible) `application/json`.
+- There is pretty straightforward validation on all `POST` routes.
 
-There are validation on all `POST` routes.
-
-There are next endpoints exposed:
+### API Doc
 
 #### `GET /api/phones` - to obtain list of phones.
 
