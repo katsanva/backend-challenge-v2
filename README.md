@@ -146,6 +146,56 @@ Response example:
 }
 ```
 
+## Development
+
+## Requirements
+
+- [Node.js](https://nodejs.org/en/)  (v10.12)
+- [npm](https://docs.npmjs.com/getting-started/what-is-npm) (6.4.1)
+- [Docker](https://www.docker.com) with docker-compose (v18.06.1-ce)
+
+> _NOTE_: For application been able to start you need to have `rabbitmq` and `mongo` up and running. The basic way to achieve that is run `docker-compose up mongo rabbitmq -d` *before* starting the application.
+
+### Start
+
+```sh
+npm start
+```
+
+### Watch
+
+```sh
+npm run dev
+```
+
+### Build
+
+```sh
+npm run build
+```
+
+### Testing
+
+#### Unit tests
+
+```sh
+npm run test:unit
+```
+
+#### Integration tests
+
+> _NOTE_: While running integration tests you need to have `rabbitmq` and `mongo` up and running. The basic startup implemented in `pretest:integration` task, but in some cases rabbitmq can take too long to start, so it will fail. To avoid that please run `docker-compose up mongo rabbitmq -d` *before* running the integration tests or simple re-run tests.
+
+```sh
+npm run test:integration
+```
+
+#### All tests
+
+```sh
+npm test
+```
+
 ## Q&A
 
 ### How would you avoid your order api to be overflow?
